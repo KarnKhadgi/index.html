@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karan Khadgi | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      background: #181828;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    .background-gradient {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+      opacity: 0.7;
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 5vw;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(24, 24, 40, 0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    nav a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #a777e3;
+      transition: width 0.3s;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+    }
+
+    nav a:hover {
+      color: #a777e3;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      padding: 3rem 5vw;
+      z-index: 1;
+      position: relative;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      padding: 3rem 2rem;
+      border-radius: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    }
+
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 24px #a777e3aa;
+      object-fit: cover;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin: 0 0 1rem 0;
+    }
+
+    .highlight {
+      color: #a777e3;
+      background: linear-gradient(90deg, #6e8efb 0%, #a777e3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: #e0e0e0;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(90deg, #6e8efb 0%, #a777e3 100%);
+      color: #fff;
+      border: none;
+      border-radius: 2rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      box-shadow: 0 4px 24px #a777e3aa;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 32px #6e8efbaa;
+    }
+
+    .projects {
+      margin: 4rem 0;
+    }
+
+    .projects h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .project-list {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .project-card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 24px #a777e3aa;
+      padding: 2rem 1.5rem;
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 12px #6e8efbaa;
+    }
+
+    .project-card h3 {
+      margin: 0.5rem 0 0.5rem 0;
+      font-size: 1.3rem;
+    }
+
+    .project-card p {
+      color: #e0e0e0;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .project-link {
+      color: #a777e3;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: auto;
+      transition: color 0.2s;
+    }
+
+    .project-link:hover {
+      color: #6e8efb;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 32px #6e8efbaa;
+    }
+
+    .contact {
+      max-width: 500px;
+      margin: 4rem auto 0 auto;
+      padding: 2.5rem 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 24px #a777e3aa;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .contact h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact input,
+    .contact textarea {
+      padding: 1rem;
+      border-radius: 1rem;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 1rem;
+      resize: none;
+      outline: none;
+      transition: background 0.2s;
+    }
+
+    .contact input:focus,
+    .contact textarea:focus {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .contact button {
+      align-self: flex-end;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0 1rem 0;
+      color: #e0e0e0;
+      font-size: 1rem;
+      background: transparent;
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 4px 24px #a777e3aa;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .project-list {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-gradient"></div>
+  <header class="glass">
+    <h1>Karan Khadgi</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero glass">
+      <img src="C:\Users\User\Desktop\web\image3.jpg" alt="Profile" class="profile-img"/>
+      <div>
+        <h2>Hi, I'm <span class="highlight">Karan Khadgi</span></h2>
+        <p class="subtitle">Creative Developer & Designer</p>
+        <a href="#projects" class="cta-btn">View My Work</a> 
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <h2>Featured Projects</h2>
+      <div class="project-list">
+        <div class="project-card glass">
+          <img src="C:\Users\User\Desktop\web\project1.png" alt="Project 1"/>
+          <h3>Project One</h3>
+          <p>Modern web app with React and Node.js, featuring real-time updates and a sleek UI.</p>
+          <a href="#" class="project-link">View Project</a>
+        </div>
+        <div class="project-card glass">
+          <img src="C:\Users\User\Desktop\web\project2.jpg" alt="Project 2"/>
+          <h3>Project Two</h3>
+          <p>Mobile-first portfolio site with advanced CSS animations and responsive design.</p>
+          <a href="#" class="project-link">View Project</a>
+        </div>
+        <div class="project-card glass">
+          <img src= "C:\Users\User\Desktop\web\project3.png.jpg"alt="Project 3"/>
+          <h3>Project Three</h3>
+          <p>Data visualization dashboard using D3.js and custom SVG graphics.</p>
+          <a href="#" class="project-link">View Project</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact glass">
+      <h2>Contact Me</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required/>
+        <input type="email" placeholder="Your Email" required/>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="cta-btn">Send Message</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Karan Khadgi. All rights reserved.</p>
+  </footer>
+</body>
+</html>
